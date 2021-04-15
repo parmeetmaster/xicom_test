@@ -8,6 +8,7 @@ import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:uuid/uuid.dart';
 import 'package:xicom_test/api/DioInstance.dart';
 import 'package:xicom_test/model/image_model.dart';
 import 'package:http/http.dart' as http;
@@ -68,18 +69,21 @@ class FormScreenProvider extends ChangeNotifier {
   }
 
   downloadImage(String url) async {
+    Uuid uuid = Uuid();
+    String save_file_name=uuid.v4();
     var response = await Dio().get(
         url,
         options: Options(responseType: ResponseType.bytes));
     final result = await ImageGallerySaver.saveImage(
         Uint8List.fromList(response.data),
         quality: 60,
-        name: "hello");
+        name: save_file_name);
 
     Directory appDocDir = await getExternalStorageDirectory();
     String appDocPath = appDocDir.path;
     print(appDocPath);
-   File file=  File("/storage/emulated/0/xicom_test/hello.jpg");
+
+    File file=  File("/storage/emulated/0/xicom_test/${save_file_name}.jpg");
     print(result);
 
 

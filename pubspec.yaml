@@ -40,6 +40,7 @@ dependencies:
   network_to_file_image: 2.3.8
   cached_network_image: 2.5.0
   image_gallery_saver: 1.6.7
+  uuid: ^2.2.2
 
 
 dev_dependencies:
