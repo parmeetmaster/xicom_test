@@ -20,6 +20,7 @@ class _FormScreenState extends State<FormScreen> {
   void initState() {
     final provider=Provider.of<FormScreenProvider>(context,listen: false);
     provider.key=GlobalKey<ScaffoldState>();
+    provider.reset();
   }
 
   @override

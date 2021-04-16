@@ -30,6 +30,17 @@ class FormScreenProvider extends ChangeNotifier {
   String filename;
   var dataBytes;
 
+  reset(){
+     firstname = new TextEditingController();
+
+     lastname = new TextEditingController();
+
+     email = new TextEditingController();
+
+     phoneNumber = new TextEditingController();
+
+  }
+
   submit() async {
     if (firstname.text.isEmpty ||
         lastname.text.isEmpty ||
